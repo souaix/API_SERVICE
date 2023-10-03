@@ -52,6 +52,8 @@ def die_count():
         barcode = parm['barcode']
         mo = sublot[0:12]
         mo_body = mo[4:12]+".CSV"
+	path_body = "/Count_CSV/"+mo[4:12]+".CSV"
+
     except:
         result = [{'Message':'Wrong Parameter','Qty':'None'}]
         return jsonify(result)
@@ -68,15 +70,15 @@ def die_count():
             ftp.cwd('WAFERTRAN6B')
 
             if (mo_body in ftp.nlst()) == True:
-                downloadfile(ftp, "/WAFERTRAN6B/"+mo_body, mo_body)
-                df_6B = pd.read_csv(mo_body)
+                downloadfile(ftp, "/WAFERTRAN6B/"+mo_body, path_body)
+                df_6B = pd.read_csv(path_body)
                 df_6B = df_6B[["Data create","Op id","Mo #","Frame barcode", "Qty"]]
                 df_6B.replace('\s', '', regex=True, inplace=True)
             else:
                 ftp.cwd(yy)
                 if (mo_body in ftp.nlst()) == True:
-                    downloadfile(ftp, "/WAFERTRAN6B/"+yy+"/"+mo_body, mo_body)
-                    df_6B = pd.read_csv(mo_body)
+                    downloadfile(ftp, "/WAFERTRAN6B/"+yy+"/"+mo_body, path_body)
+                    df_6B = pd.read_csv(path_body)
                     df_6B = df_6B[["Data create","Op id","Mo #","Frame barcode", "Qty"]]
                     df_6B.replace('\s', '', regex=True, inplace=True)
                 else:
@@ -102,15 +104,15 @@ def die_count():
             ftp.cwd('WAFERTRAN8A')
 
             if (mo_body in ftp.nlst()) == True:
-                downloadfile(ftp, "/WAFERTRAN8A/"+mo_body, mo_body)
-                df_8A = pd.read_csv(mo_body)
+                downloadfile(ftp, "/WAFERTRAN8A/"+mo_body, path_body)
+                df_8A = pd.read_csv(path_body)
                 df_8A = df_8A[["Data create","Op id","Mo #","Frame barcode", "Qty"]]
                 df_8A.replace('\s', '', regex=True, inplace=True)
             else:
                 ftp.cwd(yy)
                 if (mo_body in ftp.nlst()) == True:
-                    downloadfile(ftp, "/WAFERTRAN8A/"+yy+"/"+mo_body, mo_body)
-                    df_8A = pd.read_csv(mo_body)
+                    downloadfile(ftp, "/WAFERTRAN8A/"+yy+"/"+mo_body, path_body)
+                    df_8A = pd.read_csv(path_body)
                     df_8A = df_8A[["Data create","Op id","Mo #","Frame barcode", "Qty"]]
                     df_8A.replace('\s', '', regex=True, inplace=True)
                 else:
@@ -135,15 +137,15 @@ def die_count():
             ftp.cwd('WAFERTRAN8B')
 
             if (mo_body in ftp.nlst()) == True:
-                downloadfile(ftp, "/WAFERTRAN8B/"+mo_body, mo_body)
-                df_8B = pd.read_csv(mo_body)
+                downloadfile(ftp, "/WAFERTRAN8B/"+mo_body, path_body)
+                df_8B = pd.read_csv(path_body)
                 df_8B = df_8B[["Data create","Op id","Mo #","Frame barcode", "Qty"]]
                 df_8B.replace('\s', '', regex=True, inplace=True)
             else:
                 ftp.cwd(yy)
                 if (mo_body in ftp.nlst()) == True:
-                    downloadfile(ftp, "/WAFERTRAN8B/"+yy+"/"+mo_body, mo_body)
-                    df_8B = pd.read_csv(mo_body)
+                    downloadfile(ftp, "/WAFERTRAN8B/"+yy+"/"+mo_body, path_body)
+                    df_8B = pd.read_csv(path_body)
                     df_8B = df_8B[["Data create","Op id","Mo #","Frame barcode", "Qty"]]
                     df_8B.replace('\s', '', regex=True, inplace=True)
                 else:
