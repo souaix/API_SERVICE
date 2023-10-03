@@ -52,11 +52,7 @@ def die_count():
         barcode = parm['barcode']
         mo = sublot[0:12]
         mo_body = mo[4:12]+".CSV"
-<<<<<<< HEAD
-        path_body = "/Count_CSV/"+mo[4:12]+".CSV"
-=======
-		path_body = "/Count_CSV/"+mo[4:12]+".CSV"
->>>>>>> 029afc2 (abc)
+        path_body = "Count_CSV/"+mo[4:12]+".CSV"
 
     except:
         result = [{'Message':'Wrong Parameter','Qty':'None'}]
